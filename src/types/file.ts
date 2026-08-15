@@ -1,4 +1,4 @@
-export type EncodingType = "UTF-8" | "UTF-8-BOM" | "GBK" | "GB2312" | "UTF-16LE" | "UTF-16BE" | "UTF-32LE" | "ASCII" | "Unknown";
+export type EncodingType = "UTF-8" | "UTF-8-BOM" | "GBK" | "GB2312" | "UTF-16LE" | "UTF-16BE" | "ASCII" | "Unknown";
 export type LineEnding = "Lf" | "Crlf" | "Mixed";
 
 export interface FileMeta {

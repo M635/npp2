@@ -41,7 +41,7 @@ pub fn read_tail(path: String, tail_bytes: u64) -> Result<String, String> {
 
 #[tauri::command]
 pub fn read_line_at(path: String, line_number: u64) -> Result<(u64, String), String> {
-    chunk_reader::ChunkReader::new(&path, None)?.read_line_at(line_number).map_err(|e| e.to_string())
+    chunk_reader::ChunkReader::new(&path, None).map_err(|e| e.to_string())?.read_line_at(line_number).map_err(|e| e.to_string())
 }
 
 #[tauri::command]

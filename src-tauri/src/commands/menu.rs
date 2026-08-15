@@ -7,7 +7,7 @@ fn tr<'a>(lang: &str, zh: &'a str, en: &'a str) -> &'a str {
 
 macro_rules! m {
     ($app:expr, $id:literal, $zh:expr, $en:expr, $lang:expr) => {
-        MenuItem::with_id($app, $id, tr($lang, $zh, $en), true, None::<&str>)
+        MenuItem::with_id($app, $id, tr($lang, $zh, $en), true, None::<&str>)?
     };
 }
 
