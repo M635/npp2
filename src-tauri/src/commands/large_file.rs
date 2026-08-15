@@ -52,5 +52,5 @@ pub fn is_large_file(path: String) -> Result<bool, String> {
 
 #[tauri::command]
 pub fn count_lines(path: String) -> Result<u64, String> {
-    chunk_reader::ChunkReader::new(&path, None)?.count_lines().map_err(|e| e.to_string())
+    chunk_reader::ChunkReader::new(&path, None).map_err(|e| e.to_string())?.count_lines().map_err(|e| e.to_string())
 }

@@ -36,14 +36,14 @@ impl FileWatcher {
             });
             self.watcher = Some(watcher);
         }
-        self.watcher.as_ref().unwrap().watch(&path_buf, RecursiveMode::NonRecursive).map_err(|e| e.to_string())?;
+        self.watcher.as_mut().unwrap().watch(&path_buf, RecursiveMode::NonRecursive).map_err(|e| e.to_string())?;
         self.paths.insert(path_buf);
         Ok(())
     }
 
     pub fn unwatch(&mut self, path: String) -> Result<(), String> {
         let path_buf = PathBuf::from(path);
-        if let Some(watcher) = self.watcher.as_ref() {
+        if let Some(watcher) = self.watcher.as_mut() {
             let _ = watcher.unwatch(&path_buf);
         }
         self.paths.remove(&path_buf);
@@ -51,7 +51,7 @@ impl FileWatcher {
     }
 
     pub fn unwatch_all(&mut self) {
-        if let Some(watcher) = self.watcher.as_ref() {
+        if let Some(watcher) = self.watcher.as_mut() {
             for p in &self.paths {
                 let _ = watcher.unwatch(p);
             }

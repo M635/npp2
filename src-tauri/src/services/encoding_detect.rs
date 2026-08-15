@@ -31,7 +31,7 @@ pub fn detect_encoding(data: &[u8]) -> crate::models::file_meta::Encoding {
     let sample_len = std::cmp::min(data.len(), 4096);
     let mut detector = EncodingDetector::new();
     let _ = detector.feed(&data[..sample_len], true);
-    let name = detector.guess(true).name();
+    let name = detector.guess(None, true).name();
 
     match name {
         "GBK" | "gb18030" | "GB18030" => crate::models::file_meta::Encoding::Gbk,
