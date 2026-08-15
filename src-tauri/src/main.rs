@@ -6,6 +6,10 @@ use commands::file_watcher::WatcherState;
 use services::watcher::FileWatcher;
 use tauri::Emitter;
 
+fn main() {
+    npp2_lib::run();
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -13,7 +17,7 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_window_state::Builder::default().build())
         .plugin(tauri_plugin_clipboard_manager::init())
-        .manage(WatcherState(FileWatcher::new()))
+        .manage(WatcherState(FileWatcher::new().into()))
         .setup(|app| {
             let _ = commands::menu::build_menu(app.handle(), "zh");
             Ok(())
