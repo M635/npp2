@@ -64,7 +64,7 @@ pub fn decode_bytes(bytes: &[u8], encoding: &crate::models::file_meta::Encoding)
 }
 
 pub fn encode_string(text: &str, encoding: &crate::models::file_meta::Encoding) -> Vec<u8> {
-    let (enc, bom): (EncRs, Option<&[u8]>) = match encoding {
+    let (enc, bom): (&'static EncRs, Option<&[u8]>) = match encoding {
         crate::models::file_meta::Encoding::Utf8 | crate::models::file_meta::Encoding::Ascii | crate::models::file_meta::Encoding::Unknown => (UTF_8, None),
         crate::models::file_meta::Encoding::Utf8Bom => (UTF_8, Some(&[0xEF, 0xBB, 0xBF][..])),
         crate::models::file_meta::Encoding::Gbk => (GBK, None),
