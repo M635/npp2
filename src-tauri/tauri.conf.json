@@ -1,0 +1,85 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "NPP2",
+  "version": "1.0.0",
+  "identifier": "com.npp2.editor",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "frontendDist": "../dist",
+    "beforeBuildCommand": "pnpm build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "NPP2 - Notepad++ 跨平台版",
+        "width": 1200,
+        "height": 800,
+        "minWidth": 600,
+        "minHeight": 400,
+        "resizable": true,
+        "fullscreen": false,
+        "decorations": true,
+        "transparent": false,
+        "dragDropEnabled": true,
+        "visible": true,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": false,
+        "trafficLightPosition": {
+          "x": 12,
+          "y": 12
+        }
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": [],
+    "externalBin": [],
+    "copyright": "Copyright © 2024 NPP2",
+    "category": "DeveloperTool",
+    "shortDescription": "NPP2 - Notepad++ 跨平台复刻，支持 Mac x86/ARM 和 Windows x86",
+    "longDescription": "NPP2 是一款完全对标 Notepad++ 的跨平台代码文本编辑器，基于 Tauri 2.x + Rust + React + Monaco Editor 构建，支持 100+ 语言语法高亮、正则查找替换、多标签编辑、宏录制、列选择、文件对比等功能，完美支持 macOS (Intel/Apple Silicon) 和 Windows x86。",
+    "macOS": {
+      "frameworks": [],
+      "minimumSystemVersion": "10.15",
+      "exceptionDomain": "",
+      "signingIdentity": null,
+      "entitlements": null
+    },
+    "windows": {
+      "webviewInstallMode": {
+        "type": "downloadBootstrapper"
+      },
+      "nsis": {
+        "installMode": "both",
+        "languages": [
+          "SimpChinese",
+          "English"
+        ],
+        "displayLanguageSelector": true,
+        "installerIcon": "icons/icon.ico",
+        "startMenuFolder": "NPP2"
+      }
+    },
+    "linux": {
+      "deb": {
+        "depends": []
+      },
+      "appimage": {
+        "bundleMediaFramework": false
+      }
+    }
+  }
+}
